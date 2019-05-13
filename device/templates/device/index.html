@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Device Manage</p>
+<p>Device Manage helps you  manage conference device</p>
+
+{% block content %}
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>device_name</th>
+        <th>conference_name</th>
+        <th>department</th>
+        <th>borrow_time</th>
+        <th>expected_time</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+    <tr>
+        <td>{{ item.device_name }}</td>
+        <td>{{ item.conference_name }}</td>
+        <td>{{ item.department }}</td>
+        <td>{{ item.borrow_time }}</td>
+        <td>{{ item.expected_time }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
+
+</body>
+</html>
