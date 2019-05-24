@@ -26,3 +26,22 @@ def new_device(request):
             return HttpResponseRedirect(reverse('device:index'))
     context = {'form': form}
     return render(request, 'device/new_device.html', context)
+
+
+def edit_device(request, device_id):
+    """编辑既有条目"""
+    device = Device.objects.get(id=device_id)
+
+    if request.method != 'POST':
+        #初次请求，使用当前条目填充表单
+        form = DeviceForm(instance=device)
+    else:
+        #POST提交的数据，对数据进行处理
+        form = DeviceForm(instance=device, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('device:device',
+                                                args=[device_id]))
+    context = {'device': device, 'form': form}
+    return render(request, 'device/new_device.html', context)
+

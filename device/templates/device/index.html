@@ -18,16 +18,20 @@
         <th>department</th>
         <th>borrow_time</th>
         <th>expected_time</th>
+        <th>remark</th>
+        <th>modify</th>
     </tr>
     </thead>
     <tbody>
-    {% for item in items %}
+    {% for device in items %}
     <tr>
-        <td>{{ item.device_name }}</td>
-        <td>{{ item.conference_name }}</td>
-        <td>{{ item.department }}</td>
-        <td>{{ item.borrow_time }}</td>
-        <td>{{ item.expected_time }}</td>
+        <td>{{ device.device_name }}</td>
+        <td>{{ device.conference_name }}</td>
+        <td>{{ device.department }}</td>
+        <td>{{ device.borrow_time }}</td>
+        <td>{{ device.expected_time }}</td>
+        <th>{{ device.remark }}</th>
+        <th><a href="{% url 'device:edit_device' %}?device_id=device.id">edit device</a></th>
     </tr>
     {% endfor %}
     </tbody>

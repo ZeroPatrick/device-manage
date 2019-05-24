@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>edit device</title>
+</head>
+<body>
+{% block content %}
+<p>Edit device</p>
+<form action="{% url 'device:edit_device' device.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name="submit">save changes</button>
+</form>
+{% endblock content %}
+</body>
+</html>
