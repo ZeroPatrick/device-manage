@@ -25,7 +25,7 @@ SECRET_KEY = '6h_gy20dcdns-h19tpsc232lwd_2v#vm_&+186vhb&)4wd%$ck'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

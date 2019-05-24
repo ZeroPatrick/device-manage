@@ -40,8 +40,7 @@ def edit_device(request, device_id):
         form = DeviceForm(instance=device, data=request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('device:device',
-                                                args=[device_id]))
+            return HttpResponseRedirect(reverse('device:index'))
     context = {'device': device, 'form': form}
-    return render(request, 'device/new_device.html', context)
+    return render(request, 'device/edit_device.html', context)
 

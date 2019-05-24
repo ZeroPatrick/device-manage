@@ -13,13 +13,16 @@
 <table border="1">
     <thead>
     <tr>
-        <th>device_name</th>
-        <th>conference_name</th>
-        <th>department</th>
-        <th>borrow_time</th>
-        <th>expected_time</th>
-        <th>remark</th>
-        <th>modify</th>
+        <th>设备名称</th>
+        <th>使用地点</th>
+        <th>借用日期</th>
+        <th>借用人</th>
+        <th>联系电话</th>
+        <th>部门</th>
+        <th>预计归还日期</th>
+        <th>实际归还时间</th>
+        <th>备注</th>
+        <th>归还</th>
     </tr>
     </thead>
     <tbody>
@@ -27,11 +30,14 @@
     <tr>
         <td>{{ device.device_name }}</td>
         <td>{{ device.conference_name }}</td>
-        <td>{{ device.department }}</td>
         <td>{{ device.borrow_time }}</td>
+        <td>{{ device.borrower }}</td>
+        <td>{{ device.phone_number}}</td>
+        <td>{{ device.department }}</td>
         <td>{{ device.expected_time }}</td>
+        <td>{{ device.actual_time }}</td>
         <th>{{ device.remark }}</th>
-        <th><a href="{% url 'device:edit_device' %}?device_id=device.id">edit device</a></th>
+        <th><a href="{% url 'device:edit_device' device.id %}">{{ device.id }}</a></th>
     </tr>
     {% endfor %}
     </tbody>
