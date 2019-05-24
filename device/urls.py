@@ -8,4 +8,5 @@ app_name = 'device '
 urlpatterns = [
     # 主页
     path('', views.index, name='index'),
+    path('new_device', views.new_device, name='new_device'),
 ]
