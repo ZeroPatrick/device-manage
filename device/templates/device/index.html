@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+table {
+    border-collapse: collapse;
+}
+
+table, td, th {
+    border: 1px solid black;
+    text-align:center;
+}
+th{
+    background-color: #00FFFF;
+}
+</style>
 </head>
 <body>
 <p>Device Manage</p>
-<p>Device Manage helps you  manage conference device</p>
 
 {% block content %}
+<a href="{% url 'device:new_device' %}">借用设备</a>
+<p></p>
 
 <table border="1">
     <thead>
@@ -36,13 +50,12 @@
         <td>{{ device.department }}</td>
         <td>{{ device.expected_time }}</td>
         <td>{{ device.actual_time }}</td>
-        <th>{{ device.remark }}</th>
-        <th><a href="{% url 'device:edit_device' device.id %}">{{ device.id }}</a></th>
+        <td>{{ device.remark }}</td>
+        <td><a href="{% url 'device:edit_device' device.id %}">归还设备</a></td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'device:new_device' %}">Add a new device:</a>
 {% endblock content %}
 
 </body>

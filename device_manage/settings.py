@@ -112,7 +112,7 @@ USE_I18N = True
 USE_L10N = False
 
 DATE_FORMAT = 'Y年m月d'
-DATETIME_FORMAT = 'm.d H:i'
+DATETIME_FORMAT = 'm月d日 H:i'
 
 USE_TZ = False
 
