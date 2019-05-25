@@ -1,6 +1,5 @@
 from django.contrib import admin
-from device.models import Device, Room
+from device.models import Device
 admin.site.register(Device)
-admin.site.register(Room)
 
 # Register your models here.
