@@ -3,19 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-table {
-    border-collapse: collapse;
-}
-
-table, td, th {
-    border: 1px solid black;
-    text-align:center;
-}
-th{
-    background-color: #00FFFF;
-}
-</style>
+    <link type="text/css" rel="styleSheet"  href="../static/style/index.css" />
 </head>
 <body>
 <p>Device Manage</p>
@@ -36,6 +24,7 @@ th{
         <th>预计归还日期</th>
         <th>实际归还时间</th>
         <th>备注</th>
+        <th>归还设备</th>
         <th>归还</th>
     </tr>
     </thead>
@@ -52,6 +41,7 @@ th{
         <td>{{ device.actual_time }}</td>
         <td>{{ device.remark }}</td>
         <td><a href="{% url 'device:edit_device' device.id %}">归还设备</a></td>
+        <td><a href="{% url 'device:return_device' device.id device.remark %}">归还</a></td>
     </tr>
     {% endfor %}
     </tbody>
