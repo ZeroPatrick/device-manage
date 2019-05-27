@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .form{
+            display: none;
+        }
+        .but{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+{% block content %}
+
+<p>return device</p>
+<form
+        action="{% url 'device:return_device' device.id device.remark %}"
+        method="post"
+>
+    {% csrf_token %}
+    <div class="form">
+        {{ form.as_p }}
+    </div>
+    <button name="submit" value="确定" onclick="test()">确定</button>
+</form>
+<form
+        action="{% url 'device:return_device' device.id device.remark %}"
+        method="post"
+>
+    {% csrf_token %}
+    <div class="form">
+        {{ form.as_p }}
+    </div>
+    <button name="submit" value="取消" onclick="test()" class="but">取消</button>
+</form>
+{% endblock content %}
+
+</body>
+</html>

@@ -41,9 +41,10 @@ def edit_device(request, device_id):
         # POST提交的数据，对数据进行处理
         form = ModifyForm(instance=device, data=request.POST)
         if form.is_valid():
-            if device.remark == 'NO':
+            if device.remark == '未归还':
                 device.actual_time = '未归还'
-            if device.remark == 'YES':
+                print('did')
+            if device.remark == '已归还':
                 # device.actual_time = timezone.now().strftime("%m{m}%d{d} %H:%m").format(m='月', d='日')
                 device.actual_time = timezone.now().strftime("%m-%d %H:%m")
             form.save()
@@ -51,3 +52,31 @@ def edit_device(request, device_id):
     context = {'device': device, 'form': form}
     return render(request, 'device/edit_device.html', context)
 
+
+def return_device(request, device_id, device_remark):
+    device = Device.objects.get(id=device_id)
+    print(device.remark+'1')
+    if request.method != 'POST':
+        # 初次请求，使用当前条目填充表单
+        form = ModifyForm(instance=device)
+    else:
+        for key in request.POST.keys():
+            print(key)
+        for value in request.POST.values():
+            print(value)
+        # return HttpResponseRedirect(reverse('device:index'))
+        form = ModifyForm(instance=device, data=request.POST)
+        if form.is_valid():
+            print('#######')
+            if request.POST['submit'] == '取消':
+                device.actual_time = '未归还'
+                device.remark = '未归还'
+                print('did')
+            if request.POST['submit'] == '确定':
+                # device.actual_time = timezone.now().strftime("%m{m}%d{d} %H:%m").format(m='月', d='日')
+                device.actual_time = timezone.now().strftime("%m-%d %H:%m")
+                device.remark = '已归还'
+            form.save()
+            return HttpResponseRedirect(reverse('device:index'))
+    context = {'device': device, 'form': form}
+    return render(request, 'device/return_device.html', context)

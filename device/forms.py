@@ -15,5 +15,5 @@ class DeviceForm(forms.ModelForm):
 class ModifyForm(forms.ModelForm):
     class Meta:
         model = Device
-        fields = ['remark']
-        #labels = {}
+        fields = ['device_name', 'remark']
+        # labels = {}
