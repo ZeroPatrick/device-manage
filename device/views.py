@@ -53,7 +53,7 @@ def edit_device(request, device_id):
     return render(request, 'device/edit_device.html', context)
 
 
-def return_device(request, device_id, device_remark):
+def return_device(request, device_id):
     device = Device.objects.get(id=device_id)
     print(device.remark+'1')
     if request.method != 'POST':

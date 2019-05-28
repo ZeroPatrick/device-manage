@@ -41,7 +41,7 @@
         <td>{{ device.actual_time }}</td>
         <td>{{ device.remark }}</td>
         <td><a href="{% url 'device:edit_device' device.id %}">归还设备</a></td>
-        <td><a href="{% url 'device:return_device' device.id device.remark %}">归还</a></td>
+        <td><a href="{% url 'device:return_device' device.id %}">归还</a></td>
     </tr>
     {% endfor %}
     </tbody>
